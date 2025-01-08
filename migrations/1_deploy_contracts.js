@@ -1,5 +1,5 @@
 const DummyToken = artifacts.require("DummyToken");
 
 module.exports = function (deployer) {
-  deployer.deploy(DummyToken, "Dummy", "DMT");
+  deployer.deploy(DummyToken, "Dummy", "DMT", 1000000000);
 };

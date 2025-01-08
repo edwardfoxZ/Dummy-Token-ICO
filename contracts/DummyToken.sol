@@ -11,7 +11,8 @@ contract DummyToken is ERC20 {
         uint totalSupply
     ) ERC20 (name, symbol) {
         require(totalSupply > 0, "totalSupply must be greater than zero");
-        _mint(msg.sender, totalSupply);
+        _totalSupply = totalSupply;
+        _mint(msg.sender, _totalSupply);
     }
 }
 
@@ -58,7 +59,7 @@ contract DummyICO {
         onlyAdmin()
         notActive()
         {
-            uint totalSupply = DummyToken(token)._totalSupply();
+            uint totalSupply = DummyToken(token).totalSupply();
             require(_duration > 0, "duration must be bigger than zero");
             require(_availableTokens > 0 && _availableTokens <= totalSupply, "availabeTokens must be greater than zero and less than totalSupply");
             require(_minPurchase > 0, "min purchase must be bigger than zero");
